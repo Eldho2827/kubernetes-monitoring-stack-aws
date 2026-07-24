@@ -10,6 +10,30 @@
 A production-style Kubernetes monitoring environment deployed on **AWS EC2** using **Kubespray**, featuring **Prometheus**, **Grafana**, **Alertmanager**, and **Node Exporter** for real-time infrastructure monitoring and visualization.
 
 ---
+# 👨‍💻 Author
+
+Eldho Sabu
+
+Cloud & DevOps Engineer Aspirant focused on AWS Cloud, Kubernetes, automation, CI/CD, and monitoring solutions.
+
+## Profile
+
+- 🎓 B.Voc Information Technology Graduate
+- ☁️ AWS & DevOps Enthusiast
+- 🚀 Hands-on experience with:
+  - AWS Cloud Infrastructure
+  - Kubernetes Administration
+  - Docker & Containerization
+  - CI/CD Automation
+  - Linux Administration
+  - Monitoring & Observability
+
+## Connect With Me
+
+- GitHub: https://github.com/Eldho2827
+- LinkedIn: www.linkedin.com/in/eldhosabu08
+
+---
 
 ## 📌 Project Overview
 
