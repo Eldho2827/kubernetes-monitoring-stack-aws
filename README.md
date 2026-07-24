@@ -1,442 +1,192 @@
-\# 🚀 Kubernetes Monitoring Stack on AWS
+# 🚀 Production-Grade Kubernetes Monitoring Stack on AWS
 
+![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.30-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboard-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Calico](https://img.shields.io/badge/Calico-Networking-326CE5?style=for-the-badge)
+![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Kubespray](https://img.shields.io/badge/Kubespray-Ansible-red?style=for-the-badge)
 
+A production-style Kubernetes monitoring environment deployed on **AWS EC2** using **Kubespray**, featuring **Prometheus**, **Grafana**, **Alertmanager**, and **Node Exporter** for real-time infrastructure monitoring and visualization.
 
-!\[Kubernetes](https://img.shields.io/badge/Kubernetes-v1.30-blue?logo=kubernetes)
+---
 
-!\[AWS](https://img.shields.io/badge/AWS-EC2-orange?logo=amazonaws)
+## 📌 Project Overview
 
-!\[Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-orange?logo=prometheus)
+This project demonstrates how to deploy a highly available Kubernetes cluster on AWS and implement a complete monitoring solution using the **kube-prometheus-stack Helm Chart**.
 
-!\[Grafana](https://img.shields.io/badge/Grafana-Dashboard-F46800?logo=grafana)
+The monitoring stack continuously collects infrastructure and Kubernetes metrics, stores them in Prometheus, visualizes them through Grafana dashboards, and supports alerting using Alertmanager.
 
-!\[Helm](https://img.shields.io/badge/Helm-v3-0F1689?logo=helm)
+The deployment was performed on AWS EC2 instances using **Kubespray** with **Calico CNI** and includes troubleshooting of real networking issues encountered during deployment.
 
-!\[Calico](https://img.shields.io/badge/Calico-VXLAN-326CE5)
+---
+# 🏗 Architecture
 
+The following diagram represents the complete AWS Kubernetes Monitoring Architecture:
 
+<p align="center">
+<img src="diagrams/aws-kubernetes-monitoring.png" width="95%">
+</p>
 
-A production-ready Kubernetes monitoring solution deployed on \*\*AWS EC2\*\* using \*\*Kubespray\*\*, \*\*Calico\*\*, \*\*Helm\*\*, \*\*Prometheus\*\*, \*\*Grafana\*\*, and \*\*Alertmanager\*\*.
 
+---
 
+# 📷 Project Screenshots
 
-\---
+## AWS Infrastructure
 
+| EC2 Instances | Security Groups |
+|--------------|-----------------|
+| ![](screenshots/Instances.png) | ![](screenshots/security%20groups.png) |
 
+---
 
-\# 📖 Project Overview
+## Kubernetes Cluster
 
+| Nodes | System Pods |
+|-------|-------------|
+| ![](screenshots/Nodes%20ready.png) | ![](screenshots/system%20pods.png) |
 
+---
 
-This project demonstrates how to deploy a highly available Kubernetes cluster on AWS and implement a complete monitoring stack capable of collecting metrics, visualizing infrastructure health, and generating alerts.
+## Monitoring Stack
 
+| Monitoring Namespace | Monitoring Pods |
+|---------------------|-----------------|
+| ![](screenshots/Namespace.png) | ![](screenshots/monitoring%20pods%20running.png) |
 
+---
 
-The deployment uses:
+## Grafana Dashboards
 
+| Dashboard | CPU & Memory |
+|-----------|--------------|
+| ![](screenshots/Grafana%20dashboard.png) | ![](screenshots/grafana%20cpu%20memory.png) |
 
+---
 
-\- Kubespray
+# ✨ Features
 
-\- Kubernetes v1.30
+- Kubernetes Cluster deployed using Kubespray
+- AWS EC2 based infrastructure
+- Calico CNI networking
+- Prometheus Metrics Collection
+- Grafana Dashboards
+- Alertmanager Integration
+- Node Exporter Metrics
+- kube-state-metrics
+- NodePort access configuration
+- DNS troubleshooting
+- VXLAN networking troubleshooting
+- Production-style monitoring setup
 
-\- Calico VXLAN Networking
+---
 
-\- Prometheus
+# 🛠 Tech Stack
 
-\- Grafana
+- AWS EC2
+- Ubuntu 24.04
+- Kubernetes v1.30
+- Kubespray
+- Ansible
+- Calico CNI
+- Helm
+- Prometheus
+- Grafana
+- Alertmanager
+- Node Exporter
+- kube-state-metrics
 
-\- Alertmanager
+---
 
-\- kube-state-metrics
+# 📊 Components
 
-\- Node Exporter
+| Component | Purpose |
+|-----------|---------|
+| Kubernetes | Container orchestration |
+| Kubespray | Cluster deployment |
+| Calico | Pod networking |
+| Prometheus | Metrics collection |
+| Grafana | Monitoring dashboards |
+| Alertmanager | Alert management |
+| Node Exporter | Host metrics |
+| kube-state-metrics | Kubernetes object metrics |
 
+---
 
+# 📈 Monitoring Workflow
 
-\---
+EC2 Nodes
 
+↓
 
+Node Exporter
 
-\# 🏗 Architecture
+↓
 
+Prometheus
 
+↓
 
-> Architecture diagram
+Grafana Dashboards
 
+↓
 
+Alertmanager
 
-!\[Architecture](diagrams/aws-kubernetes-monitoring.png)
+---
 
+# 🚀 Skills Demonstrated
 
+- Kubernetes Administration
+- AWS Infrastructure
+- Linux Administration
+- Ansible Automation
+- Kubespray Deployment
+- Helm Package Management
+- Prometheus Monitoring
+- Grafana Dashboarding
+- Cluster Networking
+- Calico VXLAN
+- DNS Troubleshooting
+- Service Discovery
+- Production Monitoring
 
-\---
+---
 
+# 🐞 Troubleshooting
 
+During deployment several production-like issues were identified and resolved.
 
-\# ☁ AWS Infrastructure
+- Pod-to-Pod communication failure
+- Node3 DNS resolution issue
+- VXLAN networking issue
+- Calico routing verification
+- kube-proxy verification
+- CoreDNS debugging
+- Prometheus connectivity validation
+- Grafana datasource troubleshooting
 
+These issues were diagnosed using Kubernetes, Linux networking, Calico, kube-proxy, and Prometheus debugging techniques until the monitoring stack became fully operational.
 
+---
 
-| Resource | Details |
+# 📷 Final Result
 
-|----------|---------|
+✔ Kubernetes Cluster Running
 
-| Cloud Provider | AWS |
+✔ Monitoring Stack Healthy
 
-| Instances | 3 Ubuntu 24.04 EC2 |
+✔ Prometheus Connected
 
-| Kubernetes | Kubespray |
+✔ Grafana Connected
 
-| Runtime | containerd |
+✔ Node Exporter Collecting Metrics
 
-| CNI | Calico VXLAN |
+✔ Dashboards Working
 
-| Monitoring | kube-prometheus-stack |
+✔ Production Monitoring Environment Ready
 
-| Package Manager | Helm |
+---
 
-
-
-\---
-
-
-
-\# 🖥 Cluster Topology
-
-
-
-| Node | Role |
-
-|------|------|
-
-| node1 | Control Plane |
-
-| node2 | Worker |
-
-| node3 | Worker |
-
-
-
-\---
-
-
-
-\# 📦 Monitoring Stack
-
-
-
-\- Prometheus
-
-\- Grafana
-
-\- Alertmanager
-
-\- Node Exporter
-
-\- kube-state-metrics
-
-
-
-\---
-
-
-
-\# 📊 Features
-
-
-
-\- Kubernetes Cluster Monitoring
-
-\- Infrastructure Monitoring
-
-\- CPU Usage
-
-\- Memory Usage
-
-\- Node Health
-
-\- Pod Health
-
-\- Cluster Metrics
-
-\- Alerting
-
-\- Grafana Dashboards
-
-\- Prometheus Metrics
-
-\- Node Exporter Metrics
-
-
-
-\---
-
-
-
-\# 📸 Project Screenshots
-
-
-
-\## AWS Infrastructure
-
-
-
-!\[Instances](screenshots/Instances.png)
-
-
-
-!\[Security Groups](screenshots/security%20groups.png)
-
-
-
-\---
-
-
-
-\## Kubespray Deployment
-
-
-
-!\[Passwordless SSH](screenshots/passwordless%20ssh.png)
-
-
-
-!\[Ansible Installed](screenshots/Ansible%20installed.png)
-
-
-
-!\[Ansible Ping](screenshots/Ansible%20ping%20success.png)
-
-
-
-!\[Inventory](screenshots/final%20inventory.png)
-
-
-
-!\[Deployment](screenshots/kubespray%20deployment.png)
-
-
-
-\---
-
-
-
-\## Kubernetes Cluster
-
-
-
-!\[Nodes Ready](screenshots/Nodes%20ready.png)
-
-
-
-!\[System Pods](screenshots/system%20pods.png)
-
-
-
-!\[Namespaces](screenshots/Namespace.png)
-
-
-
-!\[Monitoring Pods](screenshots/monitoring%20pods%20running.png)
-
-
-
-\---
-
-
-
-\## Monitoring
-
-
-
-!\[NodePort](screenshots/Nodeport%20monitoring.png)
-
-
-
-!\[Grafana Dashboard](screenshots/Grafana%20dashboard.png)
-
-
-
-!\[CPU Memory](screenshots/grafana%20cpu%20memory.png)
-
-
-
-\---
-
-
-
-\# ⚙ Installation
-
-
-
-Detailed installation guide:
-
-
-
-```
-
-docs/Installation.md
-
-```
-
-
-
-\---
-
-
-
-\# 🛠 Troubleshooting
-
-
-
-Common issues encountered:
-
-
-
-\- DNS Resolution Failure
-
-\- Calico VXLAN Connectivity
-
-\- Grafana → Prometheus Connection
-
-\- Pod-to-Pod Networking
-
-\- CoreDNS Timeout
-
-
-
-See:
-
-
-
-```
-
-docs/Troubleshooting.md
-
-```
-
-
-
-\---
-
-
-
-\# 📚 Documentation
-
-
-
-\- docs/Architecture.md
-
-\- docs/Installation.md
-
-\- docs/Troubleshooting.md
-
-\- docs/Lessons-Learned.md
-
-
-
-\---
-
-
-
-\# 🎯 Skills Demonstrated
-
-
-
-\- AWS EC2
-
-\- Linux
-
-\- Kubernetes
-
-\- Kubespray
-
-\- Helm
-
-\- Prometheus
-
-\- Grafana
-
-\- Alertmanager
-
-\- Calico Networking
-
-\- VXLAN
-
-\- Containerd
-
-\- Networking
-
-\- Monitoring
-
-\- Troubleshooting
-
-
-
-\---
-
-
-
-\# 🚀 Future Improvements
-
-
-
-\- Ingress Controller
-
-\- Loki
-
-\- Tempo
-
-\- Persistent Storage
-
-\- GitHub Actions
-
-\- ArgoCD
-
-\- TLS using cert-manager
-
-
-
-\---
-
-
-
-\# 👨‍💻 Author
-
-
-
-\*\*Eldho Sabu\*\*
-
-
-
-AWS \& DevOps Engineer
-
-
-
-GitHub:
-
-
-
-https://github.com/Eldho2827
-
-
-
-LinkedIn:
-
-
-
-https://linkedin.com/in/eldhosabu08
-
-
-
-\---
-
-
-
-\# 📄 License
-
-
-
-This project is licensed under the MIT License.
-
+## ⭐ If you found this project useful, consider giving it a Star!
