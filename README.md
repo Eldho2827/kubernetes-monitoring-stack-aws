@@ -113,7 +113,17 @@ The following diagram represents the complete AWS Kubernetes Monitoring Architec
 | kube-state-metrics | Kubernetes object metrics |
 
 ---
+# 🚀 Deployment Flow
 
+1. Created AWS EC2 infrastructure
+2. Configured Ubuntu nodes
+3. Installed Kubernetes using Kubespray
+4. Configured Calico CNI networking
+5. Installed kube-prometheus-stack using Helm
+6. Configured Grafana dashboards
+7. Verified Prometheus targets
+8. Tested monitoring components
+   
 # 📈 Monitoring Workflow
 
 EC2 Nodes
@@ -136,23 +146,57 @@ Alertmanager
 
 ---
 
-# 🚀 Skills Demonstrated
+# 🔧 Useful Commands
 
-- Kubernetes Administration
-- AWS Infrastructure
-- Linux Administration
-- Ansible Automation
-- Kubespray Deployment
-- Helm Package Management
-- Prometheus Monitoring
-- Grafana Dashboarding
-- Cluster Networking
-- Calico VXLAN
-- DNS Troubleshooting
-- Service Discovery
-- Production Monitoring
+## Check Kubernetes Nodes
 
----
+kubectl get nodes
+
+
+## Check Monitoring Pods
+
+kubectl get pods -n monitoring
+
+
+## Check Prometheus Targets
+
+kubectl get servicemonitors -A
+
+
+## Check Cluster Resources
+
+kubectl top nodes
+kubectl top pods
+
+# 📊 PromQL Queries
+
+## CPU Usage
+
+100 - (avg by(instance)
+(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+
+
+## Memory Usage
+
+(node_memory_MemTotal_bytes -
+node_memory_MemAvailable_bytes)
+/ node_memory_MemTotal_bytes * 100
+
+
+## Pod Restart Count
+
+increase(kube_pod_container_status_restarts_total[1h])
+
+# 🚨 Alert Example
+
+High CPU Alert:
+
+Condition:
+CPU usage > 85% for 5 minutes
+
+Action:
+Alertmanager sends notification to configured channel.
+
 
 # 🐞 Troubleshooting
 
@@ -169,6 +213,30 @@ During deployment several production-like issues were identified and resolved.
 
 These issues were diagnosed using Kubernetes, Linux networking, Calico, kube-proxy, and Prometheus debugging techniques until the monitoring stack became fully operational.
 
+---
+# 📚 Lessons Learned
+
+- Kubernetes networking requires proper CNI configuration
+- Monitoring is critical for production environments
+- Prometheus exporters provide visibility into infrastructure
+- Grafana dashboards simplify troubleshooting
+- Alerting helps detect failures proactively
+  
+# 🚀 Skills Demonstrated
+
+- Kubernetes Administration
+- AWS Infrastructure
+- Linux Administration
+- Ansible Automation
+- Kubespray Deployment
+- Helm Package Management
+- Prometheus Monitoring
+- Grafana Dashboarding
+- Cluster Networking
+- Calico VXLAN
+- DNS Troubleshooting
+- Service Discovery
+- Production Monitoring
 ---
 
 # 📷 Final Result
